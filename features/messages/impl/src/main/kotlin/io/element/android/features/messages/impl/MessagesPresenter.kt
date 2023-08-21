@@ -242,7 +242,9 @@ class MessagesPresenter @AssistedInject constructor(
     private fun handleActionEdit(targetEvent: TimelineItem.Event, composerState: MessageComposerState) {
         val composerMode = MessageComposerMode.Edit(
             targetEvent.eventId,
-            (targetEvent.content as? TimelineItemTextBasedContent)?.body.orEmpty(),
+            (targetEvent.content as? TimelineItemTextBasedContent)?.let {
+                it.htmlBody ?: it.body
+            }.orEmpty(),
             targetEvent.transactionId,
         )
         composerState.eventSink(

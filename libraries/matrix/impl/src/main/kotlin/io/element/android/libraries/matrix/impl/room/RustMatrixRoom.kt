@@ -63,6 +63,7 @@ import org.matrix.rustcomponents.sdk.RoomMember
 import org.matrix.rustcomponents.sdk.RoomSubscription
 import org.matrix.rustcomponents.sdk.SendAttachmentJoinHandle
 import org.matrix.rustcomponents.sdk.genTransactionId
+import org.matrix.rustcomponents.sdk.messageEventContentFromHtml
 import org.matrix.rustcomponents.sdk.messageEventContentFromMarkdown
 import timber.log.Timber
 import java.io.File
@@ -203,9 +204,9 @@ class RustMatrixRoom(
         }
     }
 
-    override suspend fun sendMessage(message: String): Result<Unit> = withContext(roomDispatcher) {
+    override suspend fun sendMessage(body: String, htmlBody: String): Result<Unit> = withContext(roomDispatcher) {
         val transactionId = genTransactionId()
-        messageEventContentFromMarkdown(message).use { content ->
+        messageEventContentFromHtml(body, htmlBody).use { content ->
             runCatching {
                 innerRoom.send(content, transactionId)
             }

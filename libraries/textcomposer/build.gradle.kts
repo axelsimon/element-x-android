@@ -31,5 +31,9 @@ dependencies {
     implementation(projects.libraries.matrix.api)
     implementation(projects.libraries.matrixui)
     implementation(projects.libraries.designsystem)
+
+    implementation(libs.matrix.richtexteditor)
+    implementation(libs.matrix.richtexteditor.compose)
+
     ksp(libs.showkase.processor)
 }

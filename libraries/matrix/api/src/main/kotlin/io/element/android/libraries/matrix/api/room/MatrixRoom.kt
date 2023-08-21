@@ -75,7 +75,7 @@ interface MatrixRoom : Closeable {
 
     suspend fun userAvatarUrl(userId: UserId): Result<String?>
 
-    suspend fun sendMessage(message: String): Result<Unit>
+    suspend fun sendMessage(body: String, htmlBody: String): Result<Unit>
 
     suspend fun editMessage(originalEventId: EventId?, transactionId: TransactionId?, message: String): Result<Unit>
 

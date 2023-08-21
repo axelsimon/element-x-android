@@ -150,7 +150,7 @@ class FakeMatrixRoom(
         userAvatarUrlResult
     }
 
-    override suspend fun sendMessage(message: String): Result<Unit> = simulateLongTask {
+    override suspend fun sendMessage(body: String, htmlBody: String) = simulateLongTask {
         Result.success(Unit)
     }
 
