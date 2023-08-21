@@ -27,4 +27,16 @@ object VectorIcons {
     val ReportContent = R.drawable.ic_report_content
     val Groups = R.drawable.ic_groups
     val Share = R.drawable.ic_share
+    val Bold = R.drawable.ic_bold
+    val BulletList = R.drawable.ic_bullet_list
+    val CodeBlock = R.drawable.ic_code_block
+    val IndentIncrease = R.drawable.ic_indent_increase
+    val IndentDecrease = R.drawable.ic_indent_decrease
+    val InlineCode = R.drawable.ic_inline_code
+    val Italic = R.drawable.ic_italic
+    val Link = R.drawable.ic_link
+    val NumberedList = R.drawable.ic_numbered_list
+    val Quote = R.drawable.ic_quote
+    val Strikethrough = R.drawable.ic_strikethrough
+    val Underline = R.drawable.ic_underline
 }
