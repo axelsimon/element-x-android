@@ -402,6 +402,21 @@ class RustMatrixRoom(
         }
     }
 
+    override suspend fun sendPollResponse(
+        pollStartId: EventId,
+        answers: List<String>
+    ): Result<Unit> = withContext(roomDispatcher) {
+        runCatching {
+            TODO("Not yet implemented")
+            // TODO Polls: Uncomment when underlying rust api is available
+            // innerRoom.sendPollResponse(
+            //     pollStartId = pollStartId.value,
+            //     answers = answers,
+            //     txnId = genTransactionId(),
+            // )
+        }
+    }
+
     private suspend fun sendAttachment(files: List<File>, handle: () -> SendAttachmentJoinHandle): Result<MediaUploadHandler> {
         return runCatching {
             MediaUploadHandlerImpl(files, handle())
