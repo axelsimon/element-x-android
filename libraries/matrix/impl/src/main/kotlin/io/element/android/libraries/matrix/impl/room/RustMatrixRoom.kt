@@ -417,6 +417,10 @@ class RustMatrixRoom(
         }
     }
 
+    override suspend fun sendPollEnd(pollStartId: EventId): Result<Unit> {
+        TODO("Not yet implemented")
+    }
+
     private suspend fun sendAttachment(files: List<File>, handle: () -> SendAttachmentJoinHandle): Result<MediaUploadHandler> {
         return runCatching {
             MediaUploadHandlerImpl(files, handle())

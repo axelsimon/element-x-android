@@ -165,6 +165,13 @@ interface MatrixRoom : Closeable {
      */
     suspend fun sendPollResponse(pollStartId: EventId, answers: List<String>): Result<Unit>
 
+    /**
+     * Ends a poll in the room.
+     *
+     * @param pollStartId The event ID of the poll start event.
+     */
+    suspend fun sendPollEnd(pollStartId: EventId): Result<Unit>
+
     override fun close() = destroy()
 }
 

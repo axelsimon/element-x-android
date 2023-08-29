@@ -332,6 +332,10 @@ class FakeMatrixRoom(
         return sendPollResponseResult
     }
 
+    override suspend fun sendPollEnd(pollStartId: EventId): Result<Unit> {
+        TODO("Not yet implemented")
+    }
+
     fun givenLeaveRoomError(throwable: Throwable?) {
         this.leaveRoomError = throwable
     }
