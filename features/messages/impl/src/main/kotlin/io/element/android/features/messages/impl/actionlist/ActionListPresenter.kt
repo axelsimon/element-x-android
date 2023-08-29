@@ -99,6 +99,14 @@ class ActionListPresenter @Inject constructor(
                 }
                 is TimelineItemPollContent -> {
                     buildList {
+                        // TODO Poll: Reply to poll
+                        // if (timelineItem.isRemote) {
+                        //     // Can only reply or forward messages already uploaded to the server
+                        //     add(TimelineItemAction.Reply)
+                        // }
+                        if (timelineItem.isRemote && (timelineItem.isMine || userCanRedact)) {
+                            add(TimelineItemAction.EndPoll)
+                        }
                         if (timelineItem.content.canBeCopied()) {
                             add(TimelineItemAction.Copy)
                         }
