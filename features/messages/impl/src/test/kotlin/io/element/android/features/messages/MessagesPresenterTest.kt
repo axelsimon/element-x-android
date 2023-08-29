@@ -559,6 +559,20 @@ class MessagesPresenterTest {
         }
     }
 
+    @Test
+    fun `present - handle poll end`() = runTest {
+        val navigator = FakeMessagesNavigator()
+        val presenter = createMessagePresenter(navigator = navigator)
+        moleculeFlow(RecompositionMode.Immediate) {
+            presenter.present()
+        }.test {
+            val initialState = awaitItem()
+            initialState.eventSink.invoke(MessagesEvents.HandleAction(TimelineItemAction.EndPoll, aMessageEvent()))
+            assertThat(awaitItem().actionListState.target).isEqualTo(ActionListState.Target.None)
+            assertThat(navigator.onForwardEventClickedCount).isEqualTo(1)
+        }
+    }
+
     private fun TestScope.createMessagePresenter(
         coroutineDispatchers: CoroutineDispatchers = testCoroutineDispatchers(),
         matrixRoom: MatrixRoom = FakeMatrixRoom(),
