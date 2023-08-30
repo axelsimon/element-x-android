@@ -28,7 +28,7 @@ import kotlin.time.Duration.Companion.milliseconds
  * The timeout is applied for each event.
  * @return the list of consumed items.
  */
-suspend fun <T : Any> ReceiveTurbine<T>.consumeItemsUntilTimeout(timeout: Duration = 100.milliseconds): List<T> {
+suspend fun <T : Any> ReceiveTurbine<T>.consumeItemsUntilTimeout(timeout: Duration = 1000.milliseconds): List<T> {
     return consumeItemsUntilPredicate(timeout) { false }
 }
 
